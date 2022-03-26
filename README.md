@@ -32,3 +32,7 @@ My Cloudflare WAF rules to protect websites
 ## Block access to anything other than existing assets on a very simple static page
 
 `!((http.request.uri.path eq "/") or (http.request.uri.path eq "/index.html") or (http.request.uri.path eq "/en") or (http.request.uri.path eq "/en/") or (http.request.uri.path eq "/en/index.html") or (http.request.uri.path eq "/robots.txt") or (http.request.uri.path contains "/feed") or (http.request.uri.path eq "/style.css") or (http.request.uri.path eq "/favicon.ico") or (http.request.uri.path contains "/images/") or (http.request.uri.path contains "/sitemap"))`
+
+## Block unexpected HTTP request methods on a very simple static page
+
+`(http.request.method in {"POST" "PUT" "DELETE" "PATCH"})`
